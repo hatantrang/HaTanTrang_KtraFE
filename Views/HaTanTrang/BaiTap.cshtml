@@ -1,0 +1,488 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ha Tan Trang_KtraFE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #eaeded;
+        }
+        .header {
+            background-color: #131921;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            height: 60px;
+        }
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff9900;
+        }
+        .nav-search {
+            display: flex;
+            flex: 1;
+            max-width: 700px;
+            margin: 0 20px;
+        }
+        .search-input {
+            width: 100%;
+            padding: 8px 10px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+        .search-btn {
+            background-color: #febd69;
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            color: #111;
+        }
+        .nav-right {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+        .main-content {
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .hero-banner {
+            background: linear-gradient(to right, #d4e3fc, #ecd6f8);
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            margin-bottom: -40px;
+            border-radius: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        .banner-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .banner-text h1 {
+            font-size: 38px;
+            color: #1a1a1a;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+        .banner-content h1 {
+            font-size: 32px;
+            color: #0f1111;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 8px;
+        }
+        .alexa-brand {
+            font-size: 26px;
+            font-weight: bold;
+            color: #111;
+            font-family: Arial, sans-serif;
+            letter-spacing: -0.5px;
+        }
+        .hero-banner h1 {
+            font-size: 28px;
+            color: #111;
+            margin-bottom: 15px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            position: relative;
+            z-index: 10;
+        }
+        .product-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 4px;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-card h2 {
+            font-size: 18px;
+            color: #0f1111;
+            margin-bottom: 15px;
+        }
+        .card-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .mini-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .mini-item img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 5px;
+        }
+        .mini-item span {
+            font-size: 12px;
+            color: #0f1111;
+        }
+        .img-placeholder, .img-placeholder-large {
+            background-color: #f0f0f0;
+            width: 100%;
+            height: 110px;
+            margin-bottom: 5px;
+            border-radius: 4px;
+        }
+        .card-single-img {
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        .card-single-img .img-placeholder-large {
+            height: 240px;
+        }
+        .card-single-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+            }
+        .card-link {
+            color: #007185;
+            text-decoration: none;
+            font-size: 13px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        .card-link:hover {
+            text-decoration: underline;
+            color: #c7511f;
+        }
+        @@media (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .related-section {
+            background-color: white;
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        .related-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #0f1111;
+        }
+        .see-more {
+            color: #007185;
+            font-size: 14px;
+            font-weight: normal;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .related-items-row {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        .item-card img {
+            height: 200px;
+            width: 150px;
+            object-fit: contain;
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .amazon-footer {
+            background-color: #232f3e;
+            color: white;
+            margin-top: 40px;
+        }
+        .footer-top-btn {
+            background-color: #37475a;
+            text-align: center;
+            padding: 15px 0;
+        }
+        .footer-top-btn a {
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .footer-links-columns {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-links-columns .col {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+         .footer-links-columns h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #ffffff;
+         }
+         .footer-links-columns a {
+            color: #dddddd;
+            text-decoration: none;
+            font-size: 13px;
+         }
+         footer-links-columns a:hover {
+            text-decoration: underline;
+         }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-left">
+            <div class="nav-logo">
+                <span class="logo-text">amazon</span>
+            </div>
+        </div>
+        <div class="nav-search">
+            <input type="text" class="search-input" placeholder="">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="nav-right">
+            <a href="#" class="nav-link">Your Account</a>
+            <a href="#" class="nav-link">Help</a>
+            <a href="#" class="nav-link">Cart</a>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="hero-banner">
+            <div class="banner-text">
+                <h1>Shop Amazon Devices<br>with Alexa</h1>
+                <div class="alexa-logo">
+                    <span class="word-alexa">alexa</span>
+                    <svg class="alexa-smile" viewBox="0 0 100 20" width="70" height="15">
+                        <path d="M 5 5 Q 50 25 95 5" stroke="#111" stroke-width="4" fill="transparent" stroke-linecap="round" />
+                        <path d="M 85 0 L 95 5 L 88 12" stroke="#111" stroke-width="4" fill="transparent" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+            </div>
+            <div class="banner-image">
+                <img src="https://i.pinimg.com/474x/d4/9f/a3/d49fa3523c84bef766b4b2bde8296d23.jpg" alt="Amazon Devices" style="max-height: 220px; width: auto; object-fit: contain;">
+            </div>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <h2>Prime Video</h2>
+                <div class="card-content">
+                    <img src="https://m.media-amazon.com/images/S/pv-target-images/c7e0da380787eb8d397aed8375bf6125491c821697f3bacb13c7112c14c09498._SX1080_FMjpg_.jpg" alt="Prime Vieo" style="width: 100%; height: 300px; object-fit: cover; border-radius: 4px;">
+                    <a href="#" class="card-link">Try 30 days for free</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <h2>Customers' most-loved</h2>
+                <div class="card-grid-4">
+                    <div class="mini-item">
+                        <img src="https://media.routine.vn/1200x1500/prod/variant/10f25tslw009-beige-1-jpg-l7dj.webp" alt="Women's fashion">
+                        <span>Women's fashion</span>
+                    </div>
+                    <div class="mini-item">
+                        <img src="https://www.stuartslondon.com/cdn/shop/files/2000x2000_-_2026-10-01T155410.009.png?v=1790866488&width=3840" alt="Men's fashion">
+                        <span>Men's fashion</span>
+                    </div>
+                    <div class="mini-item">
+                        <img src="https://images.squarespace-cdn.com/content/v1/636b5e138fd7c9613e2a8b61/67a7d512-af98-46ba-8026-59ae51d57ea9/Product+Shot+2.jpg" alt="Beauty">
+                        <span>Beauty</span>
+                    </div>
+                    <div class="mini-item">
+                        <img src="https://chefstore.vn/public/images/2023/10/16/Proline%20A1160-18.jpeg" alt="Home">
+                        <span>Home</span>
+                    </div>
+                </div>
+                <a href="#" class="card-link">Discover items with 4+ stars</a>
+            </div>
+
+            <div class="product-card">
+                <h2>Best Sellers in Outlet</h2>
+                <div class="card-single-img">
+                    <img src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Products/Images/42/370982/iphone-18-pro-max-do-burgundy-1-639246098159595347.jpg" alt="Best Sellers in Outlet" style="width: 100%; height: 260px; object-fit: cover; border-radius: 4px;">
+                </div>
+                <a href="#" class="card-link">Shop now</a>
+            </div>
+
+            <div class="product-card">
+                <h2>Amazon exclusive toys</h2>
+                <div class="card-single-img">
+                    <img src="https://storage.sudospaces.com/babycuatoi/uploads/09122018/889-126.jpg" alt="Amazon exclusive toys" style="width: 100%; height: 260px; object-fit: cover; border-radius: 4px;">
+                </div>
+                <a href="#" class="card-link">See more</a>
+            </div>
+        </div>
+        <div class="product-grid" style="margin-top: 20px;">
+            <div class="product-card">
+                <h2>New home arrivals under $50</h2>
+                <div class="card-grid-4">
+                    <div class="mini-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLxBd_I7O7dcvLSrh590h2a2e3gJUiaQZVksGjmtFlD32j5GW71jhWaTU&s=10" alt="Kitchen & Dining">
+                        <span>Kitchen & Dining</span>
+                    </div>
+                    <div class="mini-item">
+                        <img src="https://storage.googleapis.com/onelife-public/8938501141019.jpg" alt="Home Improvement">
+                        <span>Home Improvement</span>
+                    </div>
+                    <div class="mini-item">
+                        <img src="https://nhatminhdecor.com/wp-content/uploads/2025/02/12693222147_303476956-1.jpg" alt="Décor">
+                        <span>Décor</span>
+                    </div>
+                    <div class="mini-item">
+                        <img src="https://khanvietshop.com.vn/thumbs/1000x0x3/upload/product/ao-goi-thanh-ly-12-7081.jpg" alt="Bedding & Bath">
+                        <span>Bedding & Bath</span>
+                    </div>
+                </div>
+                <a href="#" class="card-link">Shop the latest from Home</a>
+            </div>
+            <div class="product-card">
+                <h2>Top categories in Kitchen appliances</h2>
+                <div class="card-grid-4">
+                    <div class="mini-item">
+                        <img src="https://s.meta.com.vn/Data/image/2016/10/06/noi-com-dien-hamilton-beach-37541-in.jpg" alt="Cooker">
+                        <span>Cooker</span>
+                    </div>
+                    <div class="mini-item">
+                        <img src="https://www.caboocup.com/wp-content/uploads/2025/03/hinh-anh-ly-ca-phe-dep-nhat-32.webp" alt="Coffee">
+                        <span>Coffee</span>
+                    </div>
+                    <div class="mini-item">
+                        <img src="https://junger.vn/medias/jungerb/images/2024/noi-inox-co-doc-khong-1.jpg" alt="Pots and Pans">
+                        <span>Pots and Pans</span>
+                    </div>
+                    <div class="mini-item">
+                        <img src="https://img.vn.my-best.com/product_images/6973ae84ce9389dfbc5f719fcd7c3f88.jpg?ixlib=rails-4.3.1&q=70&lossless=0&w=800&h=800&fit=clip&s=6b21426ab7546028c4983e94b30c7c19" alt="Kettles">
+                        <span>Kettles</span>
+                    </div>
+                </div>
+                <a href="#" class="card-link">Explore all products in Kitchen</a>
+            </div>
+            <div class="product-card">
+                <h2>Fashion trends you like</h2>
+                <div class="card-grid-4">
+                    <div class="mini-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-miDZ-HxWeHX9Zaf9BPYEtCsm-Xzo3q-jxSZTgbNbRMONsUEduJKk9jDj&s=10" alt="Dresses">
+                        <span>Dresses</span>
+                    </div>
+                    <div class="mini-item">
+                        <img src="https://cbu01.alicdn.com/img/ibank/O1CN012H7F483ZxoI1bRxW_!!2201447621517-0-cib.jpg_960x960q90.jpg" alt="Jackets">
+                        <span>Jackets</span>
+                    </div>
+                    <div class="mini-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbEnb9SW5z4qQlAhU8hlMuZ9VurdhwVg4SiLJ47H9SXw&s=10" alt="Knits">
+                        <span>Knits</span>
+                    </div>
+                    <div class="mini-item">
+                        <img src="https://cdn.pnj.io/images/detailed/238/sp-gbddddh000101-gcddddh000053-gnddddh000574-glddddh000036-bo-trang-suc-vang-pnj-1.png" alt="Jewelry">
+                        <span>Jewelry</span>
+                    </div>
+                </div>
+                <a href="#" class="card-link">Explore more</a>
+            </div>
+            <div class="product-card">
+                <h2>Easy updates for elevated spaces</h2>
+                <div class="card-grid-4">
+                    <div class="mini-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzPX5JzMTe8T-D7mOEMefsRxe_XwZ_rv7SxG6NG5ueBScjaCsEoJNQuCZ3&s=10" alt="Baskets & hampers">
+                        <span>Baskets & hampers</span>
+                    </div>
+                    <div class="mini-item">
+                        <img src="https://zsofa.vn/wp-content/uploads/2026/04/ban-an-9-17.jpeg" alt="Accent furniture">
+                        <span>Accent furniture</span>
+                    </div>
+                    <div class="mini-item">
+                        <img src="https://giaydantuongtranle.com/wp-content/uploads/2020/02/57d14bafb7cf52910bde.jpg" alt="Wallpaper & paint">
+                        <span>Wallpaper & paint</span>
+                    </div>
+                    <div class="mini-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_GOMvacmNIgMzxq7BqUJ9ktT629yImiqeL-yVLopZRWq_ckFLx8_nNXWB&s=10" alt="Hardware">
+                        <span>Hardware</span>
+                    </div>
+                </div>
+                <a href="#" class="card-link">Shop home products</a>
+            </div>
+        </div>
+        <div class="related-section">
+            <h3>Related to items you’ve viewed <span class="see-more">See more</span></h3>
+            <div class="related-items-row">
+                <div class="item-card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpF91DTCpIy_CGbAQHELDP23Oktlg-TbMzQBCg0lxkcZvIAE0EmSMACvI&s=10" alt="Item"></div>
+                <div class="item-card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmMSXZQi7XZeIcvH8zIL5qv2VSsGtz_DJmrSO4lv97_VA2tF8s68dHaqtg&s=10" alt="Item"></div>
+                <div class="item-card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVvBCUvNXnKfvbrDOdtejCNKA63wRj14SHzOqs8Ih6ltRyvo_beuTwR70&s=10" alt="Item"></div>
+                <div class="item-card"><img src="https://andora.com.vn/wp-content/uploads/2022/05/ao-blazer-voi-quan-jeans-1.jpg" alt="Item"></div>
+                <div class="item-card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmdJwsdWSzPc4Mep8H3eUaHWMyj4pmzgsx2WSE7vDyHoKJ5Ls2fVGPO9w&s=10" alt="Item"></div>
+                <div class="item-card"><img src="https://file.hstatic.net/200000503583/file/phong-cach-thoi-trang-nam-13_d022183aeab04052bd4054396f3de231.jpg" alt="Item"></div>
+                <div class="item-card"><img src="https://bizweb.dktcdn.net/100/399/392/files/cac-kieu-quan-nam.jpg?v=1657302581247" alt="Item"></div>
+                <div class="item-card"><img src="https://media.routine.vn/1200x1500/prod/variant/10s26shlu001-2-png-fn2e.webp" alt="Item"></div>
+            </div>
+        </div>
+    </main>
+    <footer class="amazon-footer">
+        <div class="footer-top-btn">
+            <a href="#">Back to top</a>
+        </div>
+        <div class="footer-links-columns">
+            <div class="col">
+                <h4>Get to Know Us</h4>
+                <a href="#">Careers</a>
+                <a href="#">Blog</a>
+                <a href="#">About Amazon</a>
+            </div>
+            <div class="col">
+                <h4>Make Money with Us</h4>
+                <a href="#">Sell products on Amazon</a>
+                <a href="#">Protect & Build Your Brand</a>
+                <a href="#">Advertise Your Products</a>
+            </div>
+            <div class="col">
+                <h4>Amazon Payment Products</h4>
+                <a href="#">Amazon Business Card</a>
+                <a href="#">Reload Your Balance</a>
+            </div>
+            <div class="col">
+                <h4>Let Us Help You</h4>
+                <a href="#">Amazon and COVID-19</a>
+                <a href="#">Your Account</a>
+                <a href="#">Shipping Rates & Policies</a>
+            </div>
+        </div>
+    </footer>
+    </main>
+</body>
+</html>
